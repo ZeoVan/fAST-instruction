@@ -33,7 +33,7 @@ To generate an flatbuffer representation of the AST.
 
 While the protobuf representation is more convenient when traversing and modifying the AST, the flatbuffer representation is much faster in parsing time.
 
-To generate an Graph representation of the AST:
+To generate an Graph representation of from the fbs representation:
 
 ```bash
   $  docker run -v $(pwd):/e --entrypoint ggnn -it yijun/fast Bubblesort.fbs dummy.txt Bubblesort.txt
