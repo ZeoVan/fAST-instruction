@@ -15,26 +15,36 @@ A runnable docker image of the tool can be pulled by using this command:
 
 ## Example usages:
 
-To generate an AST representation of a file.
+The example files can be found in [this](https://github.com/bdqnghi/fAST-instruction/tree/master/sample_files_
+
+To generate an protobuffer representation of the AST.
 
 ```bash
   $ cd sample_files
-  $ docker run -v $(pwd):/e -it yijun/fast -p Test.c Test.pb
+  $ docker run -v $(pwd):/e -it yijun/fast -p Bubblesort.java Bubblesort.pb
 ```
 
+To generate an flatbuffer representation of the AST.
+
+```bash
+  $ cd sample_files
+  $ docker run -v $(pwd):/e -it yijun/fast -S -G Bubblesort.java Bubblesort.fbs
+```
+
+While the protobuf representation is more convenient when traversing and modifying the AST, the flatbuffer representation is much faster in parsing time.
 
 To generate an Graph representation of the AST:
 
-```python
-  $  python3 generate_graph Test.pb Test.txt
+```bash
+  $  docker run -v $(pwd):/e --entrypoint ggnn -it yijun/fast Bubblesort.fbs dummy.txt Bubblesort.txt
 ```
-
-The Test.txt is a graph representation with the format: source_id, source_node_type edge_type sink_id, sink_node_type.
+Ignore the dummy.txt, it's a redundant output (we intended to use it for other purpose)
+The Bubblesort.txt is a graph representation with the format: source_id, source_node_type edge_type sink_id, sink_node_type.
 For example, the edge:
 ```
 22,3 1 21,4
 ```
-means that the node with id 22 connects to the node with id 21 via the edge with id 1. Also, the node with id 22 has the type of 3, the node with id 21 has the type of 4.
+means that the node with id 22 connects to the node with id 21 via the edge type 1. Also, the node with id 22 has the type of 3, the node with id 21 has the type of 4.
 
 For the list of node types, see [this](https://github.com/bdqnghi/graph-ast/blob/master/srcml_node_types.tsv).
 For the list of edge types, see [this](https://github.com/bdqnghi/graph-ast/blob/master/edge_types.tsv).
