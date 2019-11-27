@@ -15,7 +15,7 @@ A runnable docker image of the tool can be pulled by using this command:
 
 ## Example usages:
 
-The example files can be found in [this](https://github.com/bdqnghi/fAST-instruction/tree/master/sample_files_
+The example files can be found in [this](https://github.com/bdqnghi/fAST-instruction/tree/master/sample_files)
 
 To generate an protobuffer representation of the AST.
 
