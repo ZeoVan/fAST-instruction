@@ -53,5 +53,5 @@ def traverse_tree(root):
 
 data = load_pickle(file_path)
 print(data)
-root = data.element
-traverse_tree(root)
+# root = data.element
+# traverse_tree(root)
